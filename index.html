@@ -13,7 +13,11 @@
           <h3 class="titulo">Minhas Tarefas Pessoais</h3>
 
           <div v-for="tarefa in lista" :key="tarefa" class="tarefas">
-            <input type="checkbox" @click="tarefa.estado = !tarefa.estado" />
+            <input
+              type="checkbox"
+              @click="tarefa.estado = !tarefa.estado"
+              style="cursor: pointer"
+            />
             <label :class="{ tarefaConcluida: tarefa.estado }"
               >{{tarefa.nome}}</label
             >
@@ -37,7 +41,11 @@
               class="input"
             />
             <br />
-            <button class="botao" @click="adicionarTarefa(novaTarefa.nome)">
+            <button
+              class="botao"
+              @click="adicionarTarefa(novaTarefa.nome)"
+              style="cursor: pointer"
+            >
               {{ tarefaEmEdicao() ? 'Editar' : 'Adicionar' }}
             </button>
 
@@ -45,6 +53,7 @@
               @click="limparLista()"
               class="botao_limpar"
               v-if="lista.length"
+              style="cursor: pointer"
             >
               Limpar
             </button>
