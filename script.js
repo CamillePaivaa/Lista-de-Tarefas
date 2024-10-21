@@ -19,7 +19,7 @@ const ListaTarefas = {
           this.tarefaAtual.editando = false;
           this.tarefaAtual = null;
         } else {
-          this.lista.push({ ...this.novaTarefa });
+          this.lista.push(this.novaTarefa);
         }
         this.limparInput();
       } else {
