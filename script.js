@@ -10,7 +10,7 @@ const ListaTarefas = {
       tarefaAtual: null,
     };
   },
-
+  //hhyhyyh
   methods: {
     adicionarTarefa: function () {
       if (this.novaTarefa.nome) {
