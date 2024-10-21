@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Lista de Tarefas</title>
+  </head>
+  <body>
+    <main id="app">
+      <section class="list_page">
+        <div class="elementos_container">
+          <h3 class="titulo">Minhas Tarefas Pessoais</h3>
+
+          <div v-for="tarefa in lista" :key="tarefa" class="tarefas">
+            <input type="checkbox" @click="tarefa.estado = !tarefa.estado" />
+            <label :class="{ tarefaConcluida: tarefa.estado }"
+              >{{tarefa.nome}}</label
+            >
+
+            <br />
+
+            <img
+              src="./img/edit.png"
+              @click="colocarInput(tarefa)"
+              @click="tarefa.editando = true"
+            />
+
+            <img src="./img/lixo.png" @click="excluirTarefa(tarefa.nome)" />
+          </div>
+
+          <div class="novaTarefa_Container">
+            <input
+              v-model="novaTarefa.nome"
+              type="text"
+              placeholder="Escreva sua tarefa aqui.."
+              class="input"
+            />
+            <br />
+            <button class="botao" @click="adicionarTarefa(novaTarefa.nome)">
+              {{ tarefaEmEdicao() ? 'Editar' : 'Adicionar' }}
+            </button>
+
+            <button
+              @click="limparLista()"
+              class="botao_limpar"
+              v-if="lista.length"
+            >
+              Limpar
+            </button>
+          </div>
+
+          <div class="instrucoes">
+            <p>Intruções:</p>
+            <ul>
+              <li>
+                Clique no texto da tarefa para alternar entre concluído/desfeito
+              </li>
+              <li>Use o botão limpar tudo para remover todos os itens</li>
+              <li>Use o campo de entrada para adicionar novas tarefas</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
