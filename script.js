@@ -13,7 +13,9 @@ const ListaTarefas = {
 
   methods: {
     adicionarTarefa: function () {
-      if (this.novaTarefa.nome) {
+      var tarefaExistente = this.verificaExistencia();
+
+      if (this.novaTarefa.nome && !tarefaExistente) {
         if (this.tarefaAtual) {
           this.tarefaAtual.nome = this.novaTarefa.nome;
           this.tarefaAtual.editando = false;
@@ -23,8 +25,14 @@ const ListaTarefas = {
         }
         this.limparInput();
       } else {
-        alert("Você deve inserir uma tarefa!");
+        alert(
+          "Você deve inserir uma tarefa ou adicionar uma qua não exista na lista!"
+        );
       }
+    },
+
+    verificaExistencia: function () {
+      return this.lista.some((item) => item.nome === this.novaTarefa.nome);
     },
 
     limparInput: function () {
