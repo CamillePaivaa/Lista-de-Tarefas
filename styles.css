@@ -29,6 +29,7 @@
   justify-content: row;
   column-gap: 10px;
   margin-top: 40px;
+  flex-wrap: wrap;
 }
 .tarefas {
   padding: 3px;
@@ -76,4 +77,43 @@
   align-items: center;
   font-size: small;
   color: gray;
+}
+
+@media (max-width: 768px) {
+  .list_page {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 2%;
+  }
+
+  .tarefas {
+    width: 90%;
+  }
+
+  .input {
+    width: 150px;
+  }
+
+  .novaTarefa_Container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .list_page {
+    width: 100%;
+    border-width: 5px;
+  }
+
+  .input {
+    width: 240px;
+  }
+
+  .botao,
+  .botao_limpar {
+    width: 240px;
+    padding: 5px;
+    margin-top: 10px;
+  }
 }
